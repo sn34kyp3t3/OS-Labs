@@ -1,0 +1,13 @@
+6
+5
+chem
+mech
+computers
+computers
+arts
+mech
+drama
+plane
+bio
+chemical
+maths

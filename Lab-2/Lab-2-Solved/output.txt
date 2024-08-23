@@ -1,0 +1,25 @@
+Query number 0:
+Query number computers:
+Department ID: 2
+Transformed name: cOMPUTERS
+
+Query number 1:
+Query number arts:
+Department ID: -1
+Transformed name: rats
+
+Query number 2:
+Query number mech:
+Department ID: 1
+Transformed name: mECH
+
+Query number 3:
+Query number drama:
+Department ID: -1
+Transformed name: rdama
+
+Query number 4:
+Query number plane:
+Department ID: -1
+Transformed name: lpane
+
