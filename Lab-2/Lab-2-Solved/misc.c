@@ -4,29 +4,34 @@
 #include <stdlib.h>
 #include <string.h>
 
-char **database_creation(FILE *file, int database, int queries) {
+char **database_creation(FILE *file, int database, int queries)
+{
 
   char **tokens = (char **)malloc(sizeof(char *) * database);
 
-  if (!tokens) {
+  if (!tokens)
+  {
     perror("Memory allocation error");
     exit(EXIT_FAILURE);
   }
 
   int i = 0;
 
-  for (; i < database / 2; i++) {
+  for (; i < database / 2; i++)
+  {
     tokens[i] = (char *)malloc(BUFFER_SIZE * sizeof(char));
     fscanf(file, "%s/n", tokens[i]);
   }
 
   char buffer[BUFFER_SIZE];
 
-  for (int j = 0; j < queries; j++) {
+  for (int j = 0; j < queries; j++)
+  {
     fscanf(file, "%s\n", buffer);
   }
 
-  for (; i < database; i++) {
+  for (; i < database; i++)
+  {
     tokens[i] = (char *)malloc(BUFFER_SIZE * sizeof(char));
     fscanf(file, "%s/n", tokens[i]);
   }
@@ -34,11 +39,13 @@ char **database_creation(FILE *file, int database, int queries) {
   return tokens;
 }
 
-char **load_queries(FILE *file, int queries, int database) {
+char **load_queries(FILE *file, int queries, int database)
+{
 
   char **queries_tokens = (char **)malloc(sizeof(char *) * queries);
 
-  if (!queries_tokens) {
+  if (!queries_tokens)
+  {
     perror("Memory allocation error");
     exit(EXIT_FAILURE);
   }
@@ -48,12 +55,14 @@ char **load_queries(FILE *file, int queries, int database) {
   char buffer[BUFFER_SIZE];
 
   fscanf(file, "%d\n%d\n", &database, &queries);
-  for (int i = 0; i < database / 2; i++) {
+  for (int i = 0; i < database / 2; i++)
+  {
     fscanf(file, "%s\n", buffer);
   }
 
   // read querires
-  for (int i = 0; i < queries; i++) {
+  for (int i = 0; i < queries; i++)
+  {
     queries_tokens[i] = (char *)malloc(sizeof(char) * BUFFER_SIZE);
     fscanf(file, "%s\n", queries_tokens[i]);
   }
@@ -61,12 +70,11 @@ char **load_queries(FILE *file, int queries, int database) {
   return queries_tokens;
 }
 
-void query_parser(FILE *output, int queries, char **tokens,
-                  char **queries_tokens, int num_tokens) {
-
+void query_parser(FILE *output, int queries, char **tokens, char **queries_tokens, int num_tokens)
+{
   department dept;
-
-  for (int i = 0; i < queries; i++) {
+  for (int i = 0; i < queries; i++)
+  {
 
     dept.name = queries_tokens[i];
 
@@ -77,9 +85,12 @@ void query_parser(FILE *output, int queries, char **tokens,
     fprintf(output, "Query number %d:\n", i);
     fprintf(output, "Query number %s:\n", dept.name);
 
-    if (dept.id != -1) {
+    if (dept.id != -1)
+    {
       fprintf(output, "Department ID: %d\n", dept.id);
-    } else {
+    }
+    else
+    {
       fprintf(output, "Department ID: -1\n");
     }
 
